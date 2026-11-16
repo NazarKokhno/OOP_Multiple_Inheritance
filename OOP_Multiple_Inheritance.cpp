@@ -73,6 +73,33 @@ public:
 
 };
 
+class Cat : public Pet
+{
+private:
+    string breed;
+    bool isIndoor;
+public:
+    Cat(string name = "NoInfo", int age = 0, string breed = "NoInfo",bool isIndoor = false) 
+        : Pet(name, age), breed(breed),isIndoor(isIndoor)
+    {
+
+    }
+
+    void Sound() const override
+    {
+        cout << "Meow!" << endl;
+    }
+    void Show() const override
+    {
+        Pet::Show();
+        cout << "Indoor cat: " << (isIndoor ? "Yes" : "No") << endl;
+    }
+    void Type() const override
+    {
+        cout << "Breed: " << breed << endl;
+    }
+
+};
 
 
 int main()
@@ -83,7 +110,12 @@ int main()
     dog.Show();
     dog.Type();
 
-   
+    cout << endl;
+
+    Cat cat("Barsik", 3, "British Shorthair");
+    cat.Sound();
+    cat.Show();
+    cat.Type();
 
     return 0;
 }
