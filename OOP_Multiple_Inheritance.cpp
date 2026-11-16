@@ -101,6 +101,58 @@ public:
 
 };
 
+class Parrot : public Pet
+{
+private:
+    string type;
+    bool canSpeak;
+public:
+    Parrot(string name = "NoInfo", int age = 0, string type = "NoInfo", bool canSpeak = false)
+        : Pet(name, age), type(type), canSpeak(canSpeak)
+    {
+    }
+
+    void Sound() const override
+    {
+        cout << (canSpeak ? "Hello!" : "Squawk!") << endl;
+    }
+    void Show() const override
+    {
+        Pet::Show();
+        cout << "Can speak: " << (canSpeak ? "Yes" : "No") << endl;
+    }
+    void Type() const override
+    {
+        cout << "Type: " << type << endl;
+    }
+};
+
+class Hamster : public Pet
+{
+private:
+    string type;
+    bool activeAtNight;
+public:
+    Hamster(string name = "NoInfo", int age = 0, string type = "NoInfo", bool activeAtNight = false)
+        : Pet(name, age), type(type), activeAtNight(activeAtNight)
+    {
+    }
+
+    void Sound() const override
+    {
+        cout << "Squeak!" << endl;
+    }
+    void Show() const override
+    {
+        Pet::Show();
+        cout << "Active at night: " << (activeAtNight ? "Yes" : "No") << endl;
+    }
+    void Type() const override
+    {
+        cout << "Type: " << type << endl;
+    }
+};
+
 
 int main()
 {
@@ -116,6 +168,20 @@ int main()
     cat.Sound();
     cat.Show();
     cat.Type();
+
+    cout << endl;
+
+    Parrot parrot("Kesha", 2, "Budgerigar", true);
+    parrot.Sound();
+    parrot.Show();
+    parrot.Type();
+
+    cout << endl;
+
+    Hamster hamster("Homa", 1, "Syrian hamster", true);
+    hamster.Sound();
+    hamster.Show();
+    hamster.Type();
 
     return 0;
 }
