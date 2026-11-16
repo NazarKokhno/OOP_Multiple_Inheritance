@@ -22,8 +22,6 @@ public:
 
 };
 
-    
-
 int main()
 {
 
