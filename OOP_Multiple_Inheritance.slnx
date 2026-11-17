@@ -3,5 +3,5 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="OOP_Multiple_Inheritance.vcxproj" />
+  <Project Path="OOP_Multiple_Inheritance.vcxproj" Id="a0ab5a45-0326-45c8-982d-7ceb37058b96" />
 </Solution>

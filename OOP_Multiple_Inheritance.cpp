@@ -3,6 +3,8 @@
 
 using namespace std;
 
+
+// Task 1
 class Address
 {
 protected:
@@ -13,7 +15,7 @@ public:
     Address(string streetName = "NoInfo",int houseNumber = 0,string cityName = "NoInfo") 
         : streetName(streetName),houseNumber(houseNumber),cityName(cityName) {}
 
-    void Show()
+    void Show() const
     {
         cout << "Street: " << streetName
             << "\nHouse: " << houseNumber
@@ -154,35 +156,75 @@ public:
 };
 
 
+class Zoo : public Dog, public Cat, public Parrot, public Hamster
+{
+private:
+    Address address;
+    string name;
+public:
+    Zoo(
+        string streetName, int houseNumber, string cityName,
+        string zooName,
+
+        string dogName, int dogAge, string dogBreed,
+
+        string catName, int catAge, string catBreed, bool isIndoor,
+
+        string parrotName, int parrotAge, string parrotType, bool canSpeak,
+
+        string hamsterName, int hamsterAge, string hamsterType, bool activeAtNight
+    )
+        : Dog(dogName, dogAge, dogBreed),
+        Cat(catName, catAge, catBreed, isIndoor),
+        Parrot(parrotName, parrotAge, parrotType, canSpeak),
+        Hamster(hamsterName, hamsterAge, hamsterType, activeAtNight),
+        address(streetName, houseNumber, cityName),
+        name(zooName) {}
+
+    void Show() const
+    {
+        cout << "Zoo name: " << name << endl;
+        address.Show();
+    }
+
+};
+
 int main()
 {
-    Dog dog("Rex", 5, "German Shepherd");
+    Zoo zoo(
+        "Shevchenka", 15, "Kyiv", "Happy Zoo",
 
-    dog.Sound();
-    dog.Show();
-    dog.Type();
+        "Rex", 5, "German Shepherd",
 
-    cout << endl;
+        "Barsik", 3, "British Shorthair", true,
 
-    Cat cat("Barsik", 3, "British Shorthair");
-    cat.Sound();
-    cat.Show();
-    cat.Type();
+        "Kesha", 2, "Macaw", true,
 
-    cout << endl;
+        "Homa", 1, "Syrian", true
+    );
 
-    Parrot parrot("Kesha", 2, "Budgerigar", true);
-    parrot.Sound();
-    parrot.Show();
-    parrot.Type();
+    cout << "===== ZOO =====" << endl;
+    zoo.Show();
 
-    cout << endl;
+    cout << "\n===== DOG =====" << endl;
+    zoo.Dog::Show();
+    zoo.Dog::Type();
+    zoo.Dog::Sound();
 
-    Hamster hamster("Homa", 1, "Syrian hamster", true);
-    hamster.Sound();
-    hamster.Show();
-    hamster.Type();
+    cout << "\n===== CAT =====" << endl;
+    zoo.Cat::Show();
+    zoo.Cat::Type();
+    zoo.Cat::Sound();
+
+    cout << "\n===== PARROT =====" << endl;
+    zoo.Parrot::Show();
+    zoo.Parrot::Type();
+    zoo.Parrot::Sound();
+
+    cout << "\n===== HAMSTER =====" << endl;
+    zoo.Hamster::Show();
+    zoo.Hamster::Type();
+    zoo.Hamster::Sound();
 
     return 0;
 }
-
