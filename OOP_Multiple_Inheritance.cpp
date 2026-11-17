@@ -320,7 +320,6 @@ int main()
     zoo.Hamster::Sound();*/
 
     // Task 2
-
     Dog dog("Max", 4, "Labrador");
     Cat cat("Luna", 2, "Siamese", false);
     Parrot parrot("Rio", 3, "Cockatiel", false);
